@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VFED - 植物工厂光伏储能设计基准</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      background: #141413;
+      overflow: hidden;
+    }
+
+    /* Scene containers */
+    .scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scene.active {
+      opacity: 1;
+    }
+
+    /* Scene 1: Title */
+    #scene-title {
+      background: #faf9f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #scene-title .title {
+      font-size: 72px;
+      font-weight: 900;
+      color: #141413;
+      line-height: 1.2;
+      max-width: 1000px;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    #scene-title .subtitle {
+      font-size: 24px;
+      font-weight: 500;
+      color: #d97757;
+      margin-top: 24px;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    #scene-title .vfed-badge {
+      margin-top: 48px;
+      padding: 12px 24px;
+      background: #141413;
+      color: #faf9f5;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Scene 2: Problem */
+    #scene-problem {
+      background: #141413;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 160px;
+    }
+
+    #scene-problem .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #d97757;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+
+    #scene-problem .big-stat {
+      font-size: 180px;
+      font-weight: 900;
+      color: #faf9f5;
+      line-height: 1;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    #scene-problem .stat-label {
+      font-size: 28px;
+      color: #b0aea5;
+      margin-top: 16px;
+      opacity: 0;
+    }
+
+    #scene-problem .problem-text {
+      font-size: 32px;
+      color: #faf9f5;
+      max-width: 800px;
+      margin-top: 60px;
+      line-height: 1.5;
+      opacity: 0;
+    }
+
+    /* Scene 3: Framework */
+    #scene-framework {
+      background: #faf9f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 160px;
+    }
+
+    #scene-framework .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #d97757;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+
+    #scene-framework .framework-title {
+      font-size: 56px;
+      font-weight: 700;
+      color: #141413;
+      opacity: 0;
+    }
+
+    #scene-framework .framework-layers {
+      display: flex;
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .framework-layer {
+      flex: 1;
+      padding: 32px;
+      background: #fff;
+      border: 2px solid #e8e6dc;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .framework-layer .layer-num {
+      font-size: 14px;
+      font-weight: 600;
+      color: #d97757;
+      margin-bottom: 12px;
+    }
+
+    .framework-layer .layer-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #141413;
+    }
+
+    .framework-layer .layer-desc {
+      font-size: 16px;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    /* Scene 4: 5 Cities */
+    #scene-cities {
+      background: #141413;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 160px;
+    }
+
+    #scene-cities .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #d97757;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+
+    #scene-cities .cities-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #faf9f5;
+      margin-bottom: 60px;
+      opacity: 0;
+    }
+
+    #scene-cities .city-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .city-bar {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    .city-bar .city-name {
+      width: 100px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #faf9f5;
+    }
+
+    .city-bar .bar-track {
+      flex: 1;
+      height: 48px;
+      background: #2a2a2a;
+      position: relative;
+    }
+
+    .city-bar .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4285f4, #6b9bff);
+      width: 0;
+    }
+
+    .city-bar .city-stat {
+      width: 160px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #b0aea5;
+    }
+
+    .city-bar.lhasa .bar-fill { background: linear-gradient(90deg, #4285f4, #6b9bff); }
+    .city-bar.haikou .bar-fill { background: linear-gradient(90deg, #f9a825, #ffd54f); }
+    .city-bar.shanghai .bar-fill { background: linear-gradient(90deg, #ea852e, #ffb74d); }
+    .city-bar.urumqi .bar-fill { background: linear-gradient(90deg, #9c6ade, #b388ff); }
+    .city-bar.harbin .bar-fill { background: linear-gradient(90deg, #64748b, #90a4ae); }
+
+    /* Scene 5: Key Finding */
+    #scene-finding {
+      background: #d97757;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #scene-finding .finding-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+
+    #scene-finding .big-number {
+      font-size: 200px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-top: 24px;
+      opacity: 0;
+      transform: scale(0.7);
+    }
+
+    #scene-finding .finding-unit {
+      font-size: 48px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 16px;
+      opacity: 0;
+    }
+
+    #scene-finding .finding-desc {
+      font-size: 28px;
+      color: rgba(255,255,255,0.9);
+      margin-top: 32px;
+      max-width: 700px;
+      line-height: 1.5;
+      opacity: 0;
+    }
+
+    /* Scene 6: Closing */
+    #scene-closing {
+      background: #141413;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px;
+    }
+
+    #scene-closing .vfed-logo {
+      font-size: 64px;
+      font-weight: 900;
+      color: #faf9f5;
+      opacity: 0;
+    }
+
+    #scene-closing .closing-text {
+      font-size: 24px;
+      color: #b0aea5;
+      margin-top: 24px;
+      opacity: 0;
+    }
+
+    #scene-closing .attribution {
+      margin-top: 60px;
+      font-size: 16px;
+      color: #6b7280;
+      opacity: 0;
+    }
+
+    #scene-closing .journal-ref {
+      margin-top: 16px;
+      padding: 12px 24px;
+      border: 1px solid #374151;
+      font-size: 14px;
+      color: #9ca3af;
+      opacity: 0;
+    }
+
+    /* Transition overlay */
+    #transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #141413;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Decorative grid */
+    .grid-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image:
+        linear-gradient(#fff 1px, transparent 1px),
+        linear-gradient(90deg, #fff 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Transition overlay -->
+  <div id="transition"></div>
+
+  <!-- Scene 1: Title -->
+  <div id="scene-title" class="scene active">
+    <div class="grid-bg"></div>
+    <div class="title">植物工厂光伏储能<br>设计基准</div>
+    <div class="subtitle">VFED × 5气候带 × 10584配置验证</div>
+    <div class="vfed-badge">VERTICAL FARM ENERGY DESIGNER</div>
+  </div>
+
+  <!-- Scene 2: Problem -->
+  <div id="scene-problem" class="scene">
+    <div class="section-label">研究背景</div>
+    <div class="big-stat">30-50%</div>
+    <div class="stat-label">电力成本占植物工厂运营费用比例</div>
+    <div class="problem-text">传统研究忽视光周期调度灵活性，且缺乏基于实测数据的设计基准</div>
+  </div>
+
+  <!-- Scene 3: Framework -->
+  <div id="scene-framework" class="scene">
+    <div class="section-label">研究方法</div>
+    <div class="framework-title">VFED 四层级仿真优化框架</div>
+    <div class="framework-layers">
+      <div class="framework-layer">
+        <div class="layer-num">01</div>
+        <div class="layer-name">案例研究设置</div>
+        <div class="layer-desc">EnergyPlus热模型 + 实测数据验证</div>
+      </div>
+      <div class="framework-layer">
+        <div class="layer-num">02</div>
+        <div class="layer-name">混合建模</div>
+        <div class="layer-desc">光伏 + 储能 + 负荷动态模型</div>
+      </div>
+      <div class="framework-layer">
+        <div class="layer-num">03</div>
+        <div class="layer-name">参数优化</div>
+        <div class="layer-desc">10584种配置组合寻优</div>
+      </div>
+      <div class="framework-layer">
+        <div class="layer-num">04</div>
+        <div class="layer-name">经济评估</div>
+        <div class="layer-desc">LCOE最小化 + PBP分析</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 4: 5 Cities -->
+  <div id="scene-cities" class="scene">
+    <div class="section-label">研究结果</div>
+    <div class="cities-title">5城市系统配置对比（20尺集装箱植物工厂）</div>
+    <div class="city-bars">
+      <div class="city-bar lhasa">
+        <div class="city-name">拉萨</div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="city-stat">40 m² + 40 kWh</div>
+      </div>
+      <div class="city-bar haikou">
+        <div class="city-name">海口</div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="city-stat">50 m² + 45 kWh</div>
+      </div>
+      <div class="city-bar shanghai">
+        <div class="city-name">上海</div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="city-stat">80 m² + 50 kWh</div>
+      </div>
+      <div class="city-bar urumqi">
+        <div class="city-name">乌鲁木齐</div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="city-stat">110 m² + 45 kWh</div>
+      </div>
+      <div class="city-bar harbin">
+        <div class="city-name">哈尔滨</div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="city-stat">120 m² + 50 kWh</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 5: Key Finding -->
+  <div id="scene-finding" class="scene">
+    <div class="finding-label">关键发现</div>
+    <div class="big-number">40%</div>
+    <div class="finding-unit">储能容量削减</div>
+    <div class="finding-desc">通过将光周期从晚间调整至凌晨3-5点，与光伏高峰主动对齐，可减少40%储能需求</div>
+  </div>
+
+  <!-- Scene 6: Closing -->
+  <div id="scene-closing" class="scene">
+    <div class="vfed-logo">VFED</div>
+    <div class="closing-text">开源仿真框架 × 多气候带基准数据</div>
+    <div class="attribution">上海交通大学 · 熊元科 鲍华等</div>
+    <div class="journal-ref">Energy and Buildings (Under Review)</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    // Scene timing (seconds)
+    const SCENE_TIMES = {
+      title: { start: 0, end: 8 },
+      problem: { start: 8, end: 18 },
+      framework: { start: 18, end: 30 },
+      cities: { start: 30, end: 48 },
+      finding: { start: 48, end: 56 },
+      closing: { start: 56, end: 62 }
+    };
+
+    const TOTAL_DURATION = 62;
+
+    // Register timelines
+    window.__timelines = {};
+
+    // Helper to create scene timeline
+    function createSceneTimeline(sceneId, setupFn) {
+      const tl = gsap.timeline({ paused: true });
+      setupFn(tl);
+      window.__timelines[sceneId] = tl;
+      return tl;
+    }
+
+    // Scene 1: Title
+    createSceneTimeline('scene-title', (tl) => {
+      tl.to('#scene-title', { opacity: 1, duration: 0.1 }, 0);
+      tl.from('#scene-title .title', { opacity: 0, y: 40, duration: 0.8, ease: 'power3.out' }, 0.3);
+      tl.from('#scene-title .subtitle', { opacity: 0, y: 30, duration: 0.6, ease: 'power3.out' }, 0.8);
+      tl.from('#scene-title .vfed-badge', { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' }, 1.3);
+    });
+
+    // Scene 2: Problem
+    createSceneTimeline('scene-problem', (tl) => {
+      tl.from('#scene-problem .section-label', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.2);
+      tl.from('#scene-problem .big-stat', { opacity: 0, scale: 0.8, duration: 0.8, ease: 'power3.out' }, 0.5);
+      tl.from('#scene-problem .stat-label', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 1.3);
+      tl.from('#scene-problem .problem-text', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 2.0);
+    });
+
+    // Scene 3: Framework
+    createSceneTimeline('scene-framework', (tl) => {
+      tl.from('#scene-framework .section-label', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.2);
+      tl.from('#scene-framework .framework-title', { opacity: 0, y: 30, duration: 0.7, ease: 'power3.out' }, 0.5);
+      tl.from('#scene-framework .framework-layer', { opacity: 0, y: 30, duration: 0.6, ease: 'power3.out', stagger: 0.15 }, 1.2);
+    });
+
+    // Scene 4: Cities
+    createSceneTimeline('scene-cities', (tl) => {
+      tl.from('#scene-cities .section-label', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.2);
+      tl.from('#scene-cities .cities-title', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 0.4);
+      tl.from('#scene-cities .city-bar', { opacity: 0, x: -40, duration: 0.5, ease: 'power3.out', stagger: 0.12 }, 1.0);
+
+      // Bar fill animations
+      tl.to('.city-bar.lhasa .bar-fill', { width: '33%', duration: 1.2, ease: 'power2.out' }, 1.5);
+      tl.to('.city-bar.haikou .bar-fill', { width: '42%', duration: 1.2, ease: 'power2.out' }, 1.7);
+      tl.to('.city-bar.shanghai .bar-fill', { width: '67%', duration: 1.2, ease: 'power2.out' }, 1.9);
+      tl.to('.city-bar.urumqi .bar-fill', { width: '92%', duration: 1.2, ease: 'power2.out' }, 2.1);
+      tl.to('.city-bar.harbin .bar-fill', { width: '100%', duration: 1.2, ease: 'power2.out' }, 2.3);
+    });
+
+    // Scene 5: Key Finding
+    createSceneTimeline('scene-finding', (tl) => {
+      tl.from('#scene-finding .finding-label', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.2);
+      tl.from('#scene-finding .big-number', { opacity: 0, scale: 0.7, duration: 0.8, ease: 'power3.out' }, 0.4);
+      tl.from('#scene-finding .finding-unit', { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' }, 1.2);
+      tl.from('#scene-finding .finding-desc', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 1.8);
+    });
+
+    // Scene 6: Closing
+    createSceneTimeline('scene-closing', (tl) => {
+      tl.from('#scene-closing .vfed-logo', { opacity: 0, scale: 0.9, duration: 0.7, ease: 'power3.out' }, 0.3);
+      tl.from('#scene-closing .closing-text', { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' }, 0.9);
+      tl.from('#scene-closing .attribution', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 1.5);
+      tl.from('#scene-closing .journal-ref', { opacity: 0, duration: 0.5, ease: 'power2.out' }, 2.0);
+      // Fade out at end
+      tl.to('#scene-closing', { opacity: 0, duration: 0.5 }, TOTAL_DURATION - SCENE_TIMES.closing.start - 0.5);
+    });
+
+    // Master timeline
+    const master = gsap.timeline({ paused: true });
+
+    // Scene 1: 0-8s
+    master.add(window.__timelines['scene-title'].play(), 0);
+    master.to('#scene-title', { opacity: 0, duration: 0.3 }, 7.7);
+
+    // Transition
+    master.to('#transition', { opacity: 1, duration: 0.15 }, 7.7);
+    master.to('#transition', { opacity: 0, duration: 0.15 }, 7.85);
+
+    // Scene 2: 8-18s
+    master.add(window.__timelines['scene-problem'].play(), SCENE_TIMES.problem.start);
+    master.to('#scene-problem', { opacity: 0, duration: 0.3 }, 17.7);
+    master.to('#transition', { opacity: 1, duration: 0.15 }, 17.7);
+    master.to('#transition', { opacity: 0, duration: 0.15 }, 17.85);
+
+    // Scene 3: 18-30s
+    master.add(window.__timelines['scene-framework'].play(), SCENE_TIMES.framework.start);
+    master.to('#scene-framework', { opacity: 0, duration: 0.3 }, 29.7);
+    master.to('#transition', { opacity: 1, duration: 0.15 }, 29.7);
+    master.to('#transition', { opacity: 0, duration: 0.15 }, 29.85);
+
+    // Scene 4: 30-48s
+    master.add(window.__timelines['scene-cities'].play(), SCENE_TIMES.cities.start);
+    master.to('#scene-cities', { opacity: 0, duration: 0.3 }, 47.7);
+    master.to('#transition', { opacity: 1, duration: 0.15 }, 47.7);
+    master.to('#transition', { opacity: 0, duration: 0.15 }, 47.85);
+
+    // Scene 5: 48-56s
+    master.add(window.__timelines['scene-finding'].play(), SCENE_TIMES.finding.start);
+    master.to('#scene-finding', { opacity: 0, duration: 0.3 }, 55.7);
+    master.to('#transition', { opacity: 1, duration: 0.15 }, 55.7);
+    master.to('#transition', { opacity: 0, duration: 0.15 }, 55.85);
+
+    // Scene 6: 56-62s
+    master.add(window.__timelines['scene-closing'].play(), SCENE_TIMES.closing.start);
+
+    window.__timelines['master'] = master;
+
+    // Auto play for preview
+    master.play();
+  </script>
+</body>
+</html>

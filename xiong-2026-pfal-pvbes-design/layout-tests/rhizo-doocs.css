@@ -1,0 +1,228 @@
+/* ============================================
+   Rhizo-Academic 微信公众号排版主题
+   基于 Li et al. (2021) 根系降温研究配色方案
+   
+   主色：Myrtle Green #487980 — 标题、结构线、表格表头
+   辅色：French Blue #0473C0 — 链接、次级标题
+   强调：Flame #D85117      — 重点数据、callout、加粗高亮
+   
+   设计原则：
+   - 白底配浅灰网格，与图表风格统一
+   - 粗黑轴线分隔，学术严谨感
+   - 0.7 透明度叠加层次，呼应原始图表的 rgba 表达
+   ============================================ */
+
+/* === 全局容器 === */
+{
+  font-family: "Microsoft YaHei", "SimHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+  line-height: 1.85;
+  font-size: 16px;
+  color: #222222;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* === 一级标题 h1 === */
+h1 {
+  color: #487980;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: center;
+  margin: 1.4em 0 0.8em;
+  padding: 16px 0 12px;
+  border-bottom: 3px solid #487980;
+  letter-spacing: 1px;
+}
+
+/* === 二级标题 h2 === */
+h2 {
+  color: #ffffff;
+  background: linear-gradient(135deg, #487980, #5a9299);
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 1.6em 0 0.8em;
+  padding: 6px 18px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* === 三级标题 h3 === */
+h3 {
+  color: #487980;
+  font-size: 1.05em;
+  font-weight: 600;
+  margin: 1.3em 0 0.6em;
+  padding-left: 12px;
+  border-left: 4px solid #487980;
+}
+
+/* === 正文段落 === */
+p {
+  margin: 0.8em 0;
+  text-align: justify;
+  word-spacing: 1px;
+}
+
+/* === 加粗 === */
+strong {
+  color: #D85117;
+  font-weight: 600;
+}
+
+/* === 无序列表 === */
+ul {
+  padding-left: 1.4rem;
+  margin: 0.6em 0;
+  font-size: 0.95em;
+  list-style-type: disc;
+}
+ul li {
+  margin: 0.3em 0;
+  line-height: 1.8;
+}
+
+/* === 有序列表 === */
+ol {
+  padding-left: 1.4rem;
+  margin: 0.6em 0;
+  font-size: 0.95em;
+}
+ol li {
+  margin: 0.3em 0;
+  line-height: 1.8;
+}
+
+/* === 引用块 (blockquote) === */
+blockquote {
+  background: #f0f4f4;
+  border-left: 4px solid #487980;
+  margin: 1.2em 0;
+  padding: 12px 18px;
+  font-size: 0.92em;
+  color: #555555;
+  border-radius: 0 4px 4px 0;
+}
+blockquote strong {
+  color: #D85117;
+}
+
+/* === 表格 === */
+table {
+  border-collapse: collapse;
+  margin: 1.2em auto;
+  max-width: 100%;
+  width: 100%;
+  font-size: 16px;
+  overflow: auto;
+  display: table;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+thead th {
+  background: #487980;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 12px;
+  border: 1px solid #3d686e;
+  text-align: center;
+  font-size: 16px;
+}
+
+tbody td {
+  padding: 8px 12px;
+  border: 1px solid #c5d4d5;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+  background: #f5f7f7;
+}
+tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+/* === 分隔线 === */
+hr {
+  border: none;
+  border-top: 2px solid #b0c4c5;
+  margin: 2em 0;
+}
+
+/* === 链接 === */
+a {
+  color: #0473C0;
+  text-decoration: none;
+  border-bottom: 1px solid #b0d4ed;
+}
+a:hover {
+  color: #D85117;
+  border-bottom-color: #d97a42;
+}
+
+/* === 代码块 === */
+pre,
+code {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.88em;
+}
+
+pre {
+  background: #f7f7f7;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin: 1em 0;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+:not(pre) > code {
+  background: #e8f2fa;
+  color: #0473C0;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* === 脚注 === */
+#footnotes {
+  border-top: 1px solid #c5d4d5;
+  margin-top: 2em;
+  padding-top: 1em;
+  font-size: 0.85em;
+  color: #777777;
+}
+.footnote {
+  color: #0473C0;
+  font-size: 0.8em;
+}
+
+/* === LaTeX 公式 (inline) === */
+.inline-equation {
+  vertical-align: middle;
+}
+
+/* === 总结/强调段落 === */
+h2 + p strong:first-child,
+h3 + p strong:first-child {
+  color: #D85117;
+}
+
+/* === 响应式 === */
+@media (max-width: 414px) {
+  {
+    font-size: 15px;
+    padding: 16px 0;
+  }
+  h1 {
+    font-size: 1.3em;
+  }
+  h2 {
+    font-size: 1.1em;
+  }
+  table {
+    font-size: 0.78em;
+  }
+}

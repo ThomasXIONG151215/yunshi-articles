@@ -1,0 +1,9 @@
+# Energy Baseline
+
+## Design Philosophy
+
+A visual language born from the intersection of agricultural precision and energy systems engineering. The aesthetic draws from scientific diagrams, architectural section drawings, and data visualization traditions—each element placed with the painstaking care of a master craftsman who has spent countless hours refining every proportion. This is work that could only emerge from someone at the absolute top of their field, where every mark is deliberate, every spacing considered, every color calibrated to communicate rather than decorate.
+
+The composition speaks through systematic arrangement rather than decorative impulse. Five vertical columns represent five climate zones, each one a climate stripe of graduated color temperature—from拉萨's crystalline blue-white to哈尔滨's deep slate. These are not arbitrary colors but encoded information, each hue a precise data point rendered as visual fact. The container plant factory appears as architectural silhouette, its modular form a visual anchor amid abstract data fields. Solar panels array as geometric patterns, their angles suggesting optimization algorithms at work. Energy flows trace themselves as clean vectors, connecting sun to system to storage in a diagram that reads as both technical illustration and visual poem.
+
+Typography becomes architecture within the composition—large, bold, geometric letterforms standing as structural elements rather than mere text. The thin weight of supporting labels creates hierarchy through contrast, each word placed with the precision of engineering annotations. No element floats without purpose. No spacing is accidental. The overall result feels like a scientific instrument rendered as art—meticulously crafted, labored over with care, the product of deep expertise in service of communicating something essential about how light becomes data becomes decision.
