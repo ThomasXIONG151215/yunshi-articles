@@ -15,7 +15,7 @@
 
 研究发现，如果要让植物工厂实现能源自主，**光周期的起始时间对储能容量需求的影响与光伏面积同等重要**——以上海为例，将光周期从传统晚间调整至凌晨3-5点，可在保持相同光伏规模的同时减少40%储能容量需求。5城市分析显示，对于20尺集装箱植物工厂（16平方米种植面积），实现近能源自主所需的系统配置随气候差异显著：拉萨仅需40 m²光伏+40 kWh储能，哈尔滨则需120 m²光伏+50 kWh储能。本研究为植物工厂能源系统设计提供了可本地化参考的仿真工具与基准数据。
 
-![植物工厂光伏储能系统示意图](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/conceptual/cover-cn.jpg)
+![植物工厂光伏储能系统概念图](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/conceptual/cover-cn.jpg)
 
 ## 研究背景
 
@@ -72,7 +72,7 @@
 - **空调是能耗波动的主要来源**：冬季<5 kWh/天，夏季高达25 kWh/天
 - **LED照明相对稳定**：10-20 kWh/天，随作物生长周期调整功率
 
-![植物工厂全年能耗季节性变化](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig3_energy_seasonality_cn.png)
+![上海集装箱植物工厂全年能耗分解](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig3_energy_seasonality_cn.png)
 
 空调系统的季节性COP值：冬季3.94，春季3.85，夏季2.73，秋季2.57。冬季和春季的低能耗高COP主要得益于LED和其他设备的热量散射抵消了供暖需求。
 
@@ -105,7 +105,7 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 **温度分布**：海口年均温最高约25.5°C，四季温差小；哈尔滨年均温仅5.7°C，季节变化剧烈。
 
-![五城市气候特征与能耗对比](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig2_5cities_climate_cn.png)
+![五城市光伏资源与储能配置对比](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig2_5cities_climate_cn.png)
 
 **空调能耗预测**：海口和上海空调能耗最高（约24和21 kWh/天），反映温暖气候下更大的制冷需求。拉萨空调需求最低（约18 kWh/天），尽管温度并非最低，但高海拔地区夜间温度较低减少了制冷压力。
 
@@ -129,6 +129,8 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 **上海详细分析**：上海最小可行系统的光伏阵列面积要求在不同光周期起始时刻保持一致（86.5 ± 4.9 m²），但储能容量需求差异巨大（78.5 ± 20.7 kWh）。**早晨光周期（凌晨2-6点）仅需50-60 kWh储能，而下午光周期（下午1-7点）需要80-90 kWh**。通过将光周期与太阳高峰主动对齐，在保持相同光伏规模的同时，储能需求可减少**40%**。
 
+![光周期起始时间对储能容量需求的影响](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig4_photoperiod_storage_cn.png)
+
 > **产业观察：40%储能削减的工程意义**
 >
 > 40%的储能容量削减在实际部署中意义重大。以100 kWh储能系统为例，40%的削减意味着节省约15-20万元初期投资，同时减少约30平方米的电池占地空间。这对于空间有限的集装箱植物工厂而言，既是经济收益也是空间优化。
@@ -148,9 +150,9 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 | 5年PBP | 拉萨 | 60-150 m² | 100-145 kWh | 0.032 $/kWh | ↓67% |
 | 5年PBP | 上海 | 80-150 m² | 100-145 kWh | 0.039 $/kWh | ↓59% |
 
-![五城市能源自主设计边界](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig4_photoperiod_storage_cn.png)
-![五城市最优系统配置](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig5_5cities_config_cn.png)
-![LCOE经济对比](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig6_lcoe_comparison_cn.png)
+![五城市近能源自主系统配置 (TGD<5%)](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig5_5cities_config_cn.png)
+
+![平准化能源成本(LCOE)与电网电价对比](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig6_lcoe_comparison_cn.png)
 
 > 电网电价基准为0.096 $/kWh。光伏面积和储能容量范围源于不同光周期下的最优配置差异。原稿Fig.5提供更详细的TGD信息。
 
