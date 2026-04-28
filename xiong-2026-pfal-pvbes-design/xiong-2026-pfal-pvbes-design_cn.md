@@ -47,6 +47,8 @@
 
 研究团队建立了一个四层级的集成仿真优化框架（VFED）：
 
+![VFED四层级集成仿真优化框架](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/conceptual/fig1-cn.png)
+
 **层级1：案例研究设置**
 将当地气象数据与EnergyPlus热模型集成。以位于上海的20尺集装箱植物工厂为基准案例，利用实测数据验证模型准确性。
 
