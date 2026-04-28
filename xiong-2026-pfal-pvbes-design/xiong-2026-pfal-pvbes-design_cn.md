@@ -1,3 +1,5 @@
+![ScienceDirect](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/sciencedirect.png)
+
 # 植物工厂光伏储能设计基准：1个仿真框架，5个气候带，10584种配置的数据支撑
 
 ## 📋 研究贡献
