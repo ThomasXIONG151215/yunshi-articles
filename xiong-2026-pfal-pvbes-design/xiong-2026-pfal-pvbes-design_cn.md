@@ -1,5 +1,7 @@
 ![ScienceDirect](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/sciencedirect.png)
 
+长期深耕面向植物环境的能源系统优化
+
 # 植物工厂光伏储能设计基准：1个仿真框架，5个气候带，10584种配置的数据支撑
 
 ## 📋 研究贡献
@@ -298,14 +300,24 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 Thomas Xiong, Wenyi Cai, Yue Hu, Mengxuan Song, TingTing Qian*, Hua Bao*
 
-上海交通大学全球未来技术学院 | 中国三峡集团武汉科技创新园 | 上海电机学院能源与材料学院 | 上海农业科学院农业信息研究所
+核心单位：上海交通大学溥渊未来技术学院，上海市农业科学院信息所
 
-**发表状态**：Energy and Buildings (Under Review)
+**发表状态**：Energy and Buildings (In Press)
 
-**开源框架**：VFED — https://github.com/ThomasXIONG151215/vertical-farm-energy-designer
+**开源框架**：Vertical Farm Energy Designer (VFED) — https://github.com/ThomasXIONG151215/vertical-farm-energy-designer
 
-> **注**：框架全称 Vertical Farm Energy Designer (VFED)。论文投稿初期仓库名为 OpenCROPS (Climate-Responsive Optimizer for Plant System)，现统一重命名为 vertical-farm-energy-designer，原链接自动跳转至新仓库。
+> **注**：论文投稿初期仓库名为 OpenCROPS (Climate-Responsive Optimizer for Plant System)，现统一重命名为 vertical-farm-energy-designer，原链接自动跳转至新仓库。
 
 **数据可用性**：实测数据、模型代码和优化结果均已开源
 
-**基金支持**：上海市农业应用技术开发计划 [Grant No.2023-02-08-00-12-F04621]；国家自然科学基金 [Grant No. W2542029]；上海浦东新区农业科技发展基金 [Grant No. PKJ2024-N08]
+---
+
+## 关于室墨司源
+
+室墨司源在上海交通大学与宁德时代的共同孵化下，从溥渊未来技术学院起步，长期深耕面向植物环境的能源系统优化。
+
+团队围绕人工环境中的光、温、湿、风四维能源耦合，以一系列知识产权与know-how为核心，提供从系统设计、仿真优化到控制策略的全链条解决方案。
+
+植物工厂是当前聚焦的应用场景——团队在这一领域积累了涵盖照明调度、空调制冷、除湿送风到光伏储能的全链路能源优化能力。原创的光温协同调度策略可将储能需求削减40%。
+
+研究成果发表于Nature子刊、Applied Energy等期刊，主持国家自然科学基金、上海市科委、上海市农委等项目，已形成从核心算法到工程方案的完整知识产权体系。
