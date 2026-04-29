@@ -1,6 +1,6 @@
 ![ScienceDirect](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/sciencedirect.png)
 
-长期深耕面向植物环境的能源系统优化
+> 长期深耕面向植物环境的能源系统优化
 
 # 植物工厂光伏储能设计基准：1个仿真框架，5个气候带，10584种配置的数据支撑
 
@@ -199,9 +199,13 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 ### 规模化的关键挑战
 
-研究指出了一个重要的实际约束：最优光伏面积（80-150 m²）远超集装箱本身占地面积（约15 m²）。这意味着**必须采用垂直整合策略**，如利用工业或商业建筑的大面积屋顶空间，或采用"农光互补"模式——将光伏架高安装在地面上方，地面用于放置集装箱植物工厂。
+研究揭示了一个重要的实际约束：实现植物工厂能源自主所需的光伏面积（80-150 m²）远超集装箱本身占地面积（约15 m²）。这一差距带来了两条应对路径：
 
-从单箱到大规模商业化运营，运营商可以聚合多个种植模块并集中储能以共享成本。本研究建立的VFED框架支持此类规模扩展分析。
+**路径一：解决空间问题**——将光伏架设于集装箱上方，或采用"农光互补"模式，光伏架高安装于地面，上方放置植物工厂。大型建筑屋顶（如工业厂房、物流仓库）也是可行的垂直整合方案。
+
+**路径二：寻找更可行的次优方案**——在光伏面积受限的现实条件下，可以基于VFED仿真平台，在约束空间内重新寻优。典型次优策略包括：优先保证储能充裕度以维持夜间供电；或接受适度提高的电网依赖率（TGD从<5%放宽至<15%），以换取光伏规模缩减50%以上。研究显示，即使将TGD目标放宽至10%，哈尔滨的光伏面积需求也可从120 m²降至约70 m²，大幅提升可行性。
+
+从单箱到大规模商业化运营，运营商也可以聚合多个种植模块并集中储能以共享成本。本研究建立的VFED框架支持上述各类规模扩展分析与场景寻优。
 
 
 ## 结论
@@ -214,7 +218,7 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 **2. 系统量化了光周期调度的作用**
 
-凌晨3-5点开始光周期的策略，可将储能需求削减40%，同时保持相同的能源自主水平。这将平准化能源成本（LCOE）降低至0.034 $/kWh（最低可达），相比电网电价降低57%-67%。
+凌晨3-5点开始光周期的策略，可将储能需求削减40%，同时保持相同的能源自主水平。这将平准化能源成本（LCOE）降低至0.034 $/kWh（最低可达），相比假设的固定电网电价降低57%-67%。
 
 **3. 指明了规模化路径**
 
@@ -223,6 +227,38 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 **4. 开放共享推动后续研究**
 
 研究团队已将完整仿真优化框架VFED开源发布，邀请研究者和实践者基于本地气候和经济条件进一步优化和应用这些模型。
+
+---
+
+## 关于室墨司源
+
+室墨司源在上海交通大学与宁德时代的共同孵化下，从溥渊未来技术学院起步，长期深耕面向植物环境的能源系统优化。
+
+团队围绕人工环境中的光、温、湿、风四维能源耦合，以一系列知识产权与know-how为核心，提供从系统设计、仿真优化到控制策略的全链条解决方案。
+
+植物工厂是当前聚焦的应用场景——团队在这一领域积累了涵盖照明调度、空调制冷、除湿送风到光伏储能的全链路能源优化能力。
+
+研究成果发表于Nature子刊、Applied Energy等期刊，主持国家自然科学基金、上海市科委、上海市农委等项目，已形成从核心算法到工程方案的完整知识产权体系。
+
+---
+
+## 原文信息
+
+**Photovoltaic-battery integration strategy in plant factories with artificial lighting**
+
+Thomas Xiong, Wenyi Cai, Yue Hu, Mengxuan Song, TingTing Qian*, Hua Bao*
+
+核心单位：上海交通大学溥渊未来技术学院，上海市农业科学院信息所
+
+**发表状态**：Energy and Buildings (In Press)
+
+**开源框架**：Vertical Farm Energy Designer (VFED) — https://github.com/ThomasXIONG151215/vertical-farm-energy-designer
+
+> **注**：论文投稿初期仓库名为 OpenCROPS (Climate-Responsive Optimizer for Plant System)，现统一重命名为 vertical-farm-energy-designer，原链接自动跳转至新仓库。
+
+**数据可用性**：实测数据、模型代码和优化结果均已开源
+
+
 
 ---
 
@@ -291,33 +327,3 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 | 哈尔滨 | 120 m² | 50 kWh | 3.81 kWh/m²/天 |
 
 > **注**：以上配置为实现近能源自主（TGD<5%）的最小可行配置，实际项目需根据具体场地条件和经济目标进行本地化优化。
-
----
-
-## 原文信息
-
-**Photovoltaic-battery integration strategy in plant factories with artificial lighting**
-
-Thomas Xiong, Wenyi Cai, Yue Hu, Mengxuan Song, TingTing Qian*, Hua Bao*
-
-核心单位：上海交通大学溥渊未来技术学院，上海市农业科学院信息所
-
-**发表状态**：Energy and Buildings (In Press)
-
-**开源框架**：Vertical Farm Energy Designer (VFED) — https://github.com/ThomasXIONG151215/vertical-farm-energy-designer
-
-> **注**：论文投稿初期仓库名为 OpenCROPS (Climate-Responsive Optimizer for Plant System)，现统一重命名为 vertical-farm-energy-designer，原链接自动跳转至新仓库。
-
-**数据可用性**：实测数据、模型代码和优化结果均已开源
-
----
-
-## 关于室墨司源
-
-室墨司源在上海交通大学与宁德时代的共同孵化下，从溥渊未来技术学院起步，长期深耕面向植物环境的能源系统优化。
-
-团队围绕人工环境中的光、温、湿、风四维能源耦合，以一系列知识产权与know-how为核心，提供从系统设计、仿真优化到控制策略的全链条解决方案。
-
-植物工厂是当前聚焦的应用场景——团队在这一领域积累了涵盖照明调度、空调制冷、除湿送风到光伏储能的全链路能源优化能力。原创的光温协同调度策略可将储能需求削减40%。
-
-研究成果发表于Nature子刊、Applied Energy等期刊，主持国家自然科学基金、上海市科委、上海市农委等项目，已形成从核心算法到工程方案的完整知识产权体系。
