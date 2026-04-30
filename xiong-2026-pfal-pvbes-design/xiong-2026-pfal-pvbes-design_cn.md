@@ -2,6 +2,8 @@
 
 > 长期深耕面向植物环境的能源系统优化
 
+> **⏱ 全文约14,000字，阅读约需 25 分钟 | 📌 建议收藏后阅读**
+
 ## 研究贡献
 
 - **🎯 仿真框架**：建立含植物工厂负荷，光伏、储能的联合仿真优化框架Vertical Farm Energy Designer (VFED)，基于上海全年实测数据验证模型准确性
@@ -72,7 +74,7 @@
 实测数据显示：
 - **总能耗呈季节性变化**：冬季约20 kWh/天，夏季和早秋峰值超过45 kWh/天
 - **空调是能耗波动的主要来源**：冬季<5 kWh/天，夏季高达25 kWh/天
-- **LED照明相对稳定**：10-20 kWh/天，随作物生长周期调整功率
+- **LED照明相对稳定**：10-20 kWh/天，随植物工厂自身运营需求调整功率
 
 ![上海集装箱植物工厂全年能耗分解](https://raw.githubusercontent.com/ThomasXIONG151215/yunshi-articles/main/xiong-2026-pfal-pvbes-design/figures/data_charts/fig3_energy_seasonality_cn.png)
 
@@ -246,7 +248,9 @@ $$LCOE = \frac{\sum_{t=1}^{T}\frac{I_t + M_t - G_t}{(1+r)^t}}{\sum_{t=1}^{T}\fra
 
 Thomas Xiong, Wenyi Cai, Yue Hu, Mengxuan Song, TingTing Qian*, Hua Bao*
 
-核心单位：上海交通大学溥渊未来技术学院，上海市农业科学院信息所
+**DOI**：https://doi.org/10.1016/j.enbuild.2026.117462
+
+**核心单位**：上海交通大学溥渊未来技术学院，上海市农业科学院信息所
 
 **发表状态**：Energy and Buildings (In Press)
 
@@ -300,7 +304,7 @@ Thomas Xiong, Wenyi Cai, Yue Hu, Mengxuan Song, TingTing Qian*, Hua Bao*
 
 | 参数名称 | 数值 |
 |---------|------|
-| 电网电价（上海） | 0.096 \$/kWh |
+| 电网电价（固定） | 0.096 \$/kWh |
 | 投资回收期目标 | 3年 / 5年 |
 | 平准化能源成本（LCOE） | 0.032-0.042 \$/kWh（视配置和回收期而定） |
 | 电网依赖率目标 | TGD < 5%（近能源自主） |
